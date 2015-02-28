@@ -1,41 +1,29 @@
 var count = 0;
 
-angular.module('starter.controllers', [])
+angular.module('app.controllers', [])
 
-.controller('DashCtrl', function($scope, Users) {
-  $scope.addUser = function(username, description) {
-    Users.post(username, description);
+.controller('UserGroupsCtrl', function($scope, Users, $stateParams) {
+  var user = Users.get('jameslinjl');
+  user.$bindTo($scope, 'user');
+  console.log(user);
+  var activateGroup = function(groupName) {
+    user.groups.groupName.active = true;
+    console.log(groupName + ' is active!!! :)');
   };
 })
 
-.controller('FriendsCtrl', function($scope, $firebase, Users) {
-  var refAsObject = Users.all();
-  refAsObject.$bindTo($scope, 'users');
+.controller('ProfileCtrl', function($scope, $firebase, Users) {
+  var user = Users.get('jameslinjl');
+  user.$bindTo($scope, 'user');
 })
 
-.controller('FriendDetailCtrl', function($scope, $firebase, $stateParams, Users) {
-  var user_id = $stateParams.userID;  
-  var userRef = Users.get(user_id);
-  userRef.$bindTo($scope, 'user');
+.controller('GroupDetailCtrl', function($scope, $stateParams, Groups) {
+
+  var groupId = $stateParams.groupName;
+
+  var groupRef = Groups.getUserByType(groupId, 'activeUsers');
+  console.log(groupRef);
+  $scope.activeUsers = groupRef;
+  $scope.groupName = groupId;
 });
 
-// .controller('ChatsCtrl', function($scope, Chats) {
-//   $scope.chats = Chats.all();
-//   $scope.remove = function(chat) {
-//     Chats.remove(chat);
-//   }
-// })
-
-// .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-//   $scope.chat = Chats.get($stateParams.chatId);
-// })
-
-
-
-
-
-// .controller('AccountCtrl', function($scope) {
-//   $scope.settings = {
-//     enableFriends: true
-//   };
-// });

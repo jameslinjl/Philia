@@ -1,50 +1,25 @@
 var count = 0;
 
-angular.module('starter.controllers', [])
+angular.module('app.controllers', [])
 
-.controller('DashCtrl', function($scope, $firebase) {
-  var ref = new Firebase('https://glaring-torch-2585.firebaseio.com/users');
-  var sync = $firebase(ref);
+.controller('UserGroupsCtrl', function($scope, Users, $stateParams) {
+  var user = Users.get($stateParams.userID);
+  user.$bindTo($scope, 'user');
 
-  $scope.users = sync.$asArray();
-
-  $scope.addUser = function(username, description) {
-    $scope.users.$add({username: username, description: description, userID: count});
-    count++;
+  var activateGroup = function(groupName) {
+    user.groups.groupName.active = true;
+    console.log(groupName + ' is active!!! :)');
   };
-
 })
 
-// .controller('ChatsCtrl', function($scope, Chats) {
-//   $scope.chats = Chats.all();
-//   $scope.remove = function(chat) {
-//     Chats.remove(chat);
-//   }
-// })
-
-// .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-//   $scope.chat = Chats.get($stateParams.chatId);
-// })
-
-.controller('FriendsCtrl', function($scope, $firebase) {
-  var ref = new Firebase('https://fiery-fire-2843.firebaseio.com/users');
-  var sync = $firebase(ref);
-
-  $scope.users = sync.$asArray();
+.controller('ProfileCtrl', function($scope, $firebase, Users) {
+  var user = Users.get($stateParams.userID);
+  user.$bindTo($scope, 'user');
 })
 
-.controller('FriendDetailCtrl', function($scope, $firebase, $stateParams) {
-  var user_id = $stateParmas.userID;
-  var ref = new Firebase('https://fiery-fire-2843.firebaseio.com/users');
-  $firebase(ref).$child(user_id).$bind($scope, 'user');
-
-  // userList.$loaded().then(function(userList) {
-  //   $scope.user = userList[$stateParams.userID];
-  // });
+.controller('GroupDetailCtrl', function($scope, $stateParams, Groups) {
+  var groupId = $stateParams.groupId;
+  var groupRef = Groups.get(groupId);
+  groupRef.$bindTo($scope, 'group');
 });
 
-// .controller('AccountCtrl', function($scope) {
-//   $scope.settings = {
-//     enableFriends: true
-//   };
-// });
