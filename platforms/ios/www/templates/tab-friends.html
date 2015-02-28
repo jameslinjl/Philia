@@ -2,7 +2,7 @@
   <ion-content>
     <div ng-controller="FriendsCtrl">
       <ion-list>
-        <ion-item ng-repeat="user in users" href="#/tab/friend/{{user.userID}}">
+        <ion-item ng-repeat="(key,user) in users" href="#/tab/friend/{{key}}">
           {{user.username}}
         </ion-item>
 <!--       <ion-item class="item-avatar" ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/friend/{{friend.id}}">
