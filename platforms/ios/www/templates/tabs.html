@@ -5,19 +5,16 @@ navigation history that also transitions its views in and out.
 -->
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
-    <!-- Rooms List Tab -->
-    <ion-tab title="Rooms" icon-off="ion-ios7-box-outline" icon-on="ion-ios7-box" href="#/tab/rooms">
-        <ion-nav-view name="tab-rooms"></ion-nav-view>
-    </ion-tab>
 
-    <!-- Current Selected Chat Tab -->
-    <ion-tab title="Chat" icon-off="ion-ios7-chatboxes-outline" icon-on="ion-ios7-chatboxes" href="#/tab/chat">
-        <ion-nav-view name="tab-chat"></ion-nav-view>
-    </ion-tab>
+  <!-- Dashboard Tab -->
+  <ion-tab title="Add User" icon-off="ion-ios7-pulse" icon-on="ion-ios7-pulse-strong" href="#/tab/dash">
+    <ion-nav-view name="tab-dash"></ion-nav-view>
+  </ion-tab>
 
-    <!-- Logout Button -->
-    <ion-tab title="Logout" icon-off="ion-ios7-gear-outline" icon-on="ion-ios7-gear" ng-click="logout()" href="">
-    </ion-tab>
+  <!-- Friends Tab -->
+  <ion-tab title="Users" icon-off="ion-ios7-heart-outline" icon-on="ion-ios7-heart" href="#/tab/friends">
+    <ion-nav-view name="tab-friends"></ion-nav-view>
+  </ion-tab>
 
 
 </ion-tabs>

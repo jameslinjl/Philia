@@ -1,0 +1,13 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <div ng-controller="DashCtrl">
+
+      <form ng-submit="addUser(newUser, userDescription)">
+        <input ng-model="newUser" />
+        <input ng-model="userDescription" />
+        <button class="button button-block button-positive" type="submit">Add Message</button>
+      </form>
+
+    </div>
+  </ion-content>
+</ion-view>
