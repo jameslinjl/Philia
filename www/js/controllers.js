@@ -2,18 +2,22 @@ var count = 0;
 
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $firebase) {
-  var ref = new Firebase('https://glaring-torch-2585.firebaseio.com/users');
-  var sync = $firebase(ref);
-
-  $scope.users = sync.$asArray();
-
+.controller('DashCtrl', function($scope, Users) {
   $scope.addUser = function(username, description) {
-    $scope.users.$add({username: username, description: description, userID: count});
-    count++;
+    Users.post(username, description);
   };
-
 })
+
+.controller('FriendsCtrl', function($scope, $firebase, Users) {
+  var refAsObject = Users.all();
+  refAsObject.$bindTo($scope, 'users');
+})
+
+.controller('FriendDetailCtrl', function($scope, $firebase, $stateParams, Users) {
+  var user_id = $stateParams.userID;  
+  var userRef = Users.get(user_id);
+  userRef.$bindTo($scope, 'user');
+});
 
 // .controller('ChatsCtrl', function($scope, Chats) {
 //   $scope.chats = Chats.all();
@@ -26,22 +30,9 @@ angular.module('starter.controllers', [])
 //   $scope.chat = Chats.get($stateParams.chatId);
 // })
 
-.controller('FriendsCtrl', function($scope, $firebase) {
-  var ref = new Firebase('https://fiery-fire-2843.firebaseio.com/users');
-  var sync = $firebase(ref);
-  $firebase(ref).$asObject().$bindTo($scope, 'users');
-})
 
-.controller('FriendDetailCtrl', function($scope, $firebase, $stateParams) {
-  var user_id = $stateParams.userID;
-  var ref = new Firebase('https://fiery-fire-2843.firebaseio.com/users').child(user_id);
-  $firebase(ref).$asObject().$bindTo($scope, 'user');
-  // var userList = $firebase(ref).$asArray();
 
-  // userList.$loaded().then(function(userList) {
-  //   $scope.user = userList[$stateParams.userID];
-  // });
-});
+
 
 // .controller('AccountCtrl', function($scope) {
 //   $scope.settings = {
