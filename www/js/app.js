@@ -43,6 +43,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'firebase'])
       }
     }
   })
+
   .state('home.profile', {
       url: '/profile',
       views: {
@@ -51,16 +52,29 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'firebase'])
           controller: 'ProfileCtrl'
         }
       }
-    })
-    .state('home.group-detail', {
-      url: '/group/:groupName',
-      views: {
-        'tab-groups': {
-          templateUrl: 'templates/group-detail.html',
-          controller: 'GroupDetailCtrl'
-        }
+  })
+
+  .state('home.group-detail', {
+    url: '/group/:groupName',
+    views: {
+      'tab-groups': {
+        templateUrl: 'templates/group-detail.html',
+        controller: 'GroupDetailCtrl'
       }
-    });
+    }
+  })
+
+  .state('home.user-detail', {
+    url: '/user/:userId',
+    views: {
+      'tab-groups': {
+        templateUrl: 'templates/other-profile.html',
+        controller: 'UserDetailCtrl'
+      }
+    }
+  });
+
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home/groups');
 
