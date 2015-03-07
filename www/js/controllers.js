@@ -3,15 +3,29 @@ var count = 0;
 angular.module('app.controllers', [])
 
 .controller('UserGroupsCtrl', function($scope, Users, $stateParams) {
-  var user = Users.get('sadikmaxson');
+
+  var userID  = 'sadikmaxson';
+  var user = Users.get(userID);
   user.$bindTo($scope, 'user');
 
-  $scope.activateGroup = function(groupName) {
+  $scope.activateGroup = function(groupName, activity) {
     // console.log(user['groups'][groupName]['active']);
-    user['groups'][groupName]['active'] = true;
-    console.log(groupName + ' is active!!! :)');
-    user.$save();
+
+    Users.updateActiveUser(userID, groupName, activity, true);
+    Groups.addUserToGroup(userID, groupName, activity);
+
+    // user['groups'][groupName]['active'] = true;
+    // console.log(groupName + ' is active!!! :)');
+    // user.$save();
   };
+
+  $scope.deactivateGroup = function(groupName) {
+    Users.updateActiveUser(userID, groupName, activity, false);
+    Groups.removeUserFromGroup(userID, groupName, activity);
+
+  };
+
+
 })
 
 .controller('ProfileCtrl', function($scope, $firebase, Users) {

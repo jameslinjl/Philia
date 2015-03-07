@@ -18,7 +18,16 @@ angular.module('app.services', [])
       console.log('Users.get called');
       var ref = usersRef.child(userID);
       return $firebase(ref).$asObject();
+    },
+
+    updateActiveUser: function(userID, groupName, activityType, trueFalse ) {
+      var ref = usersRef.child(userID);
+      var user = $firebase(ref).$asObject();
+      user[groupName][activityType] = trueFalse;
+      user.$save();
     }
+
+
   };
 })
 
@@ -36,12 +45,30 @@ angular.module('app.services', [])
       var ref = groupRef.child(groupId).child(listType);
       return $firebase(ref).$asArray();
     },
+    addUserToGroup: function(userID, groupName, listType) {
+      var ref = groupRef.child(groupName).child(listType);
+      var group = $firebase(ref).$asArray();
+
+      if (group.$getRecord(userID) === null ) {
+        group.$push(userID);
+      }
+    },
+    removeUserFromGroup: function(userID, groupName, listType) {
+      var ref = groupRef.child(groupName).child(listType);
+      var group = $firebase(ref).$asArray();
+
+      if (group.$getRecord(userID) !== null ) {
+        group.$remove(userID);
+      }
+    }
   //   put: function()
   //   // getAllForUser: function(userID) {
   //   //   return $firebase(usersRef.child(userID).child('communities')).$asArray();
   //   // }
   // };
-}});
+
+  };
+});
 
 
 
