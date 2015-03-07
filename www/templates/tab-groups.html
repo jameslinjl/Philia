@@ -4,7 +4,7 @@
     <ion-list>
       <ion-item ng-repeat="(groupName, value) in user.groups" href="#/home/group/{{groupName}}">
         {{groupName}}
-        <ion-option-button class="button-positive" ng-click="show()">Activate</ion-option-button>
+        <ion-option-button class="button-positive" ng-click="openModal()">Activate</ion-option-button>
         <!-- <ion-option-button class="button-positive" ng-click="activateGroup(groupName)">Activate</ion-option-button> -->
       </ion-item>
 <!--       <ion-item class="item-avatar" ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/friend/{{friend.id}}">
@@ -15,3 +15,26 @@
   </div>
   </ion-content>
 </ion-view>
+
+
+<script id="contact-modal.html" type="text/ng-template">
+  <div class="modal">
+    <ion-header-bar>
+      <h1 class="title">Edit Contact</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="contact.name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Info</span>
+          <input type="text" ng-model="contact.info">
+        </label>
+      </div>
+
+      <button class="button button-full button-energized" ng-click="closeModal()">Done</button>
+    </ion-content>
+  </div>
+</script>

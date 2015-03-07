@@ -4,15 +4,31 @@ angular.module('app.controllers', [])
 
 
 
-.controller('LoadingCtrl', function($scope, $ionicLoading) {
-  $scope.show = function() {
-    $ionicLoading.show({
-      templateUrl: '../templates/overlay.html'
-    });
+.controller('LoadingCtrl', function($scope, $ionicLoading, $ionicModal) {
+
+ $scope.contact = {
+    name: 'Mittens Cat',
+    info: 'Tap anywhere on the card to open the modal'
   };
-  $scope.hide = function(){
-    $ionicLoading.hide();
+
+  $ionicModal.fromTemplateUrl('contact-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openModal = function() {
+    $scope.modal.show();
   };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
 })
 
 .controller('UserGroupsCtrl', function($scope, Users, $stateParams) {
