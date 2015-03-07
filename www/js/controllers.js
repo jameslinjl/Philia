@@ -2,6 +2,19 @@ var count = 0;
 
 angular.module('app.controllers', [])
 
+
+
+.controller('LoadingCtrl', function($scope, $ionicLoading) {
+  $scope.show = function() {
+    $ionicLoading.show({
+      templateUrl: '../templates/overlay.html'
+    });
+  };
+  $scope.hide = function(){
+    $ionicLoading.hide();
+  };
+})
+
 .controller('UserGroupsCtrl', function($scope, Users, $stateParams) {
 
   var userID  = 'sadikmaxson';
