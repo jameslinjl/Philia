@@ -1,0 +1,132 @@
+{
+    "users": {
+        "jameslinjl": {
+            "name": "James Lin",
+            "description": "You on your way?",
+"image": "https://lh3.googleusercontent.com/-feJiQoiOAnU/AAAAAAAAAAI/AAAAAAAAAJc/yUSUk9gIjIY/photo.jpg",
+            "groups": {
+                "Columbia": {
+                    "active": false,
+                    "Running": false,
+                    "Coffee": false
+                },
+                "CFA": {
+                    "active": false,
+                    "Running": false,
+                    "Coffee": false
+                },
+                "AppNexus": {
+                    "active": false,
+                    "Running": false,
+                    "Coffee": false
+                }
+            }
+        },
+        "sadikmaxson": {
+            "name": "Dan Maxson",
+            "description": "I'm a cool cat?",
+"image": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/0af/0b5/3d9955a.jpg",
+            "groups": {
+                "Columbia": {
+                    "subgroups": [
+                        {
+                            "name": "Coffee",
+                            "checked": true
+                        },
+                        {
+                            "name": "Running",
+                            "checked": true
+                        }
+                    ],
+                    "active": false
+                },
+                "CFA": {
+                    "subgroups": [
+                        {
+                            "name": "Coffee",
+                            "checked": false
+                        },
+                        {
+                            "name": "Running",
+                            "checked": true
+                        }
+                    ],
+                    "active": false
+                },
+                "Poncho": {
+                    "subgroups": [
+                        {
+                            "name": "Coffee",
+                            "checked": true
+                        },
+                        {
+                            "name": "Running",
+                            "checked": false
+                        }
+                    ],
+                    "active": false
+                }
+            }
+        },
+        "sc2783": {
+            "name": "Steve Cheruyiot",
+            "description": "Yo dawg",
+"image": "https://media.licdn.com/mpr/mpr/shrink_500_500/p/1/005/0a7/2bb/1626a86.jpg",
+            "groups": {
+                "Columbia": {
+                    "active": false
+                },
+                "CFA": {
+                    "active": false
+                },
+                "Jae Lee's Class": {
+                    "active": false
+                }
+            }
+        }
+    },
+    "groups": {
+        "Columbia": {
+            "active": {
+                "sadikmaxson" : 1
+            }
+        },
+        "CFA": {
+            "active": [
+                "jameslinjl",
+                "sadikmaxson",
+                "sc2783"
+            ],
+            "Coffee": [],
+            "Running": [
+                "jameslinjl",
+                "sadikmaxson",
+                "sc2783"
+            ]
+        },
+        "AppNexus": {
+            "active": [
+                "jameslinjl"
+            ],
+            "Coffee": [],
+            "Running": []
+        },
+        "Poncho": {
+            "active": [
+                "sadikmaxson"
+            ],
+            "Coffee": [
+                "sadikmaxson"
+            ],
+            "Running": []
+        },
+        "Jae Lee's Class": {
+            "active": [
+                "jameslinjl",
+                "sc2783"
+            ],
+            "Coffee": [],
+            "Running": []
+        }
+    }
+}
