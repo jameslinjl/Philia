@@ -41,6 +41,11 @@ angular.module('app.services', [])
     post: function(group) {
       groupRef.push(group);
     },
+    // temporary, get rid of this later
+    // getGroupById: function(groupId) {
+    //   var ref = groupRef.child(groupId).child('subgroups');
+    //   return $firebase(ref).$asArray();
+    // },
     getUserByType: function(groupId, listType) {
       var ref = groupRef.child(groupId).child(listType);
       return $firebase(ref).$asArray();

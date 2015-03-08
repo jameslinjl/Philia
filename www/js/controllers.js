@@ -4,7 +4,7 @@ angular.module('app.controllers', [])
 
 
 
-.controller('LoadingCtrl', function($scope, $ionicLoading, $ionicModal) {
+.controller('LoadingCtrl', function($scope, $ionicLoading, $ionicModal, Groups) {
 
  $scope.contact = {
     name: 'Mittens Cat',
@@ -18,7 +18,8 @@ angular.module('app.controllers', [])
     $scope.modal = modal;
   });
 
-  $scope.openModal = function() {
+  $scope.openModal = function(groupName) {
+    $scope.toggleGroup = groupName;
     $scope.modal.show();
   };
 
@@ -26,22 +27,32 @@ angular.module('app.controllers', [])
     $scope.modal.hide();
   };
 
+  $scope.changeStatus = function(checked) {
+    console.log($scope.toggleGroup);
+    var userId = 'sadikmaxson';
+    if(checked) {
+      Groups.addUserToGroup(userId, $scope.toggleGroup, 'activeUsers');
+    } else {
+      Groups.removeUserFromGroup(userId, $scope.toggleGroup, 'activeUsers');
+    }
+  };
+
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
   });
 })
 
-.controller('UserGroupsCtrl', function($scope, Users, $stateParams) {
+.controller('UserGroupsCtrl', function($scope, Users, $stateParams, Groups) {
 
-  var userID  = 'sadikmaxson';
-  var user = Users.get(userID);
+  var userId  = 'sadikmaxson';
+  var user = Users.get(userId);
   user.$bindTo($scope, 'user');
 
   $scope.activateGroup = function(groupName, activity) {
     // console.log(user['groups'][groupName]['active']);
 
-    Users.updateActiveUser(userID, groupName, activity, true);
-    Groups.addUserToGroup(userID, groupName, activity);
+    Users.updateActiveUser(userId, groupName, activity, true);
+    Groups.addUserToGroup(userId, groupName, activity);
 
     // user['groups'][groupName]['active'] = true;
     // console.log(groupName + ' is active!!! :)');
@@ -49,8 +60,8 @@ angular.module('app.controllers', [])
   };
 
   $scope.deactivateGroup = function(groupName) {
-    Users.updateActiveUser(userID, groupName, activity, false);
-    Groups.removeUserFromGroup(userID, groupName, activity);
+    Users.updateActiveUser(userId, groupName, activity, false);
+    Groups.removeUserFromGroup(userId, groupName, activity);
 
   };
 
@@ -78,6 +89,14 @@ angular.module('app.controllers', [])
   //   user.$save();
   // };
 })
+
+// .controller('SubGroupCtrl', function($scope, $stateParams, Groups) {
+//   var groupId = $stateParams.groupName;
+//   var groupRef = Groups.getGroupById(groupId);
+//   console.log(groupRef.$keyAt(0));
+//   $scope.groupName = groupId;
+//   $scope.subgroups = groupRef;
+// })
 
 .controller('GroupDetailCtrl', function($scope, $stateParams, Groups) {
 
