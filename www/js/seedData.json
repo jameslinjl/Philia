@@ -70,7 +70,8 @@
     "groups": {
         "Columbia": {
             "active": {
-                "sadikmaxson" : 1
+                "sadikmaxson" : {"status" : 1},
+                "jameslinjl" : {"status" : 1}
             }
         },
         "CFA": {

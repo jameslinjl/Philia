@@ -9,7 +9,7 @@ angular.module('app.services', [])
 .factory('_', function() {
   return window._;
 })
-.factory('Users', function($firebase) {
+.factory('Users', function($firebaseObject) {
 
   var usersRef = new Firebase('https://fiery-fire-2843.firebaseio.com/users');
   return {
@@ -25,14 +25,14 @@ angular.module('app.services', [])
       console.log(userID);
       console.log('Users.get called');
       var ref = usersRef.child(userID);
-      return $firebase(ref).$asObject();
+      return $firebaseObject(ref);
     },
 
     updateActiveUser: function(userID, groupName, activityType, trueFalse ) {
       console.log(activityType);
       console.log(trueFalse);
       var ref = usersRef.child(userID).child('groups').child(groupName).child(activityType);
-      var activity = $firebase(ref).$asObject();
+      var activity = $firebaseObject(ref);
       console.log(activity);
       activity.$value = trueFalse;
       activity.$save();
@@ -40,19 +40,19 @@ angular.module('app.services', [])
 
     getActivityTypes: function(userID, groupName) {
       var ref = usersRef.child(userID).child('groups').child(groupName);
-      var stuff =  $firebase(ref).$asObject();
+      var stuff =  $firebaseObject(ref);
       return stuff;
     }
 
   };
 })
 
-.factory('Groups', function($firebase, _) {
+.factory('Groups', function($firebaseObject, _) {
   var groupRef = new Firebase('https://fiery-fire-2843.firebaseio.com/groups');
 
   return {
     all: function() {
-      return $firebase(groupRef).$asObject();
+      return $firebaseObject(groupRef);
     },
     post: function(group) {
       groupRef.$add(group);
@@ -65,13 +65,13 @@ angular.module('app.services', [])
     getUserByType: function(groupId, listType) {
       var ref = groupRef.child(groupId).child(listType);
       console.log(ref);
-      return $firebase(ref).$asObject();
+      return $firebaseObject(ref);
     },
 
     getUsersByTypes: function(groupId, userID) {
 
       var ref = groupRef.child(groupId);
-      var group = $firebase(ref).$asObject();
+      var group = $firebaseObject(ref);
       var users = [];
 
       // still not exactly sure everything going on in here
@@ -92,21 +92,19 @@ angular.module('app.services', [])
 
     updateActiveGroup: function(userID, groupName, activityType, trueFalse) {
       console.log(groupName);
-      var ref = groupRef.child(groupName).child(activityType);
-      var group = $firebase(ref).$asObject();
+      var ref = groupRef.child(groupName).child(activityType).child(userID);
+      var group = $firebaseObject(ref);
       console.log(group);
-      console.log(group[userID]);
 
-
-      console.log(userID);
-      if (trueFalse && group[userID] === undefined ) {
-        group[userID] = 1;
+      if (trueFalse) {
+        group.status = 1;
+        console.log('activate');
       }
-      else if (!trueFalse && group[userID] !== undefined) {
-        group[userID] = null;
-
+      else if (!trueFalse) {
+        group.status = null;
+        // group[userID].$save();
+        console.log('deactivate');
       }
-
       group.$save();
     }
 

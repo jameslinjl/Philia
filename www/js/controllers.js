@@ -62,7 +62,7 @@ angular.module('app.controllers', [])
   user.$bindTo($scope, 'user');
 })
 
-.controller('ProfileCtrl', function($scope, $firebase, Users) {
+.controller('ProfileCtrl', function($scope, $firebaseObject, Users) {
   var user = Users.get('jameslinjl');
   user.$bindTo($scope, 'user');
   // user.tempDescription = user.description;
@@ -73,7 +73,7 @@ angular.module('app.controllers', [])
   };
 })
 
-.controller('UserDetailCtrl', function($scope, $stateParams, $firebase, Users) {
+.controller('UserDetailCtrl', function($scope, $stateParams, $firebaseObject, Users) {
   var userId = $stateParams.userId;
   var user = Users.get(userId);
   user.$bindTo($scope, 'user');

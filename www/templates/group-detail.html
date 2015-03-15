@@ -7,7 +7,7 @@
 <ion-view view-title="{{groupName}}">
   <ion-content class="padding">
     <ion-list>
-            <ion-item ng-repeat="(user, num) in activeUsers" href="#/home/user/{{user}}">
+            <ion-item ng-repeat="user in activeUsers" href="#/home/user/{{user}}">
               {{user}}
             </ion-item>
           </ion-list>
