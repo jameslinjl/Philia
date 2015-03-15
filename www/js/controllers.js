@@ -1,8 +1,5 @@
-var count = 0;
 
 angular.module('app.controllers', [])
-
-
 
 .controller('LoadingCtrl', function($scope, $ionicLoading, $ionicModal, Users, Groups) {
 
@@ -99,9 +96,11 @@ angular.module('app.controllers', [])
 
   var groupId = $stateParams.groupName;
 
-  var groupRef = Groups.getUserByType(groupId, 'active');
-  console.log(groupRef);
-  $scope.activeUsers = groupRef;
+  // this is a promise, once it's fulfilled, then do the function
+  Groups.getUsersByTypes(groupId, 'jameslinjl').then(function(result) {
+    $scope.activeUsers = result;
+  });
+
   $scope.groupName = groupId;
 });
 

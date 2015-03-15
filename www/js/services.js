@@ -1,6 +1,14 @@
 'use strict';
 
+// var underscore = angular.module('underscore', []);
+// underscore.factory('_', function() {
+//   return window._; // assumes underscore has already been loaded on the page
+// });
+
 angular.module('app.services', [])
+.factory('_', function() {
+  return window._;
+})
 .factory('Users', function($firebase) {
 
   var usersRef = new Firebase('https://fiery-fire-2843.firebaseio.com/users');
@@ -39,9 +47,9 @@ angular.module('app.services', [])
   };
 })
 
-.factory('Groups', function($firebase) {
+.factory('Groups', function($firebase, _) {
   var groupRef = new Firebase('https://fiery-fire-2843.firebaseio.com/groups');
-  // var usersRef = new Firebase('https://fiery-fire-2843.firebaseio.com/users');
+
   return {
     all: function() {
       return $firebase(groupRef).$asObject();
@@ -58,6 +66,28 @@ angular.module('app.services', [])
       var ref = groupRef.child(groupId).child(listType);
       console.log(ref);
       return $firebase(ref).$asObject();
+    },
+
+    getUsersByTypes: function(groupId, userID) {
+
+      var ref = groupRef.child(groupId);
+      var group = $firebase(ref).$asObject();
+      var users = [];
+
+      // still not exactly sure everything going on in here
+      return group.$loaded(function(group) {
+        angular.forEach(group, function(activityType, key) {
+          console.log(key, activityType);
+
+          if (activityType[userID] !== undefined){
+              users.push(_.keys(activityType))
+          }
+       });
+
+        console.log(_.uniq(_.flatten(users)));
+        return _.uniq(_.flatten(users));
+      });
+
     },
 
     updateActiveGroup: function(userID, groupName, activityType, trueFalse) {
