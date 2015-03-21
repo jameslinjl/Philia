@@ -1,7 +1,8 @@
 {
     "users": {
-        "jameslinjl": {
+        "10153197898468033": {
             "name": "James Lin",
+            "uid": "10153197898468033",
             "description": "You on your way?",
 "image": "https://lh3.googleusercontent.com/-feJiQoiOAnU/AAAAAAAAAAI/AAAAAAAAAJc/yUSUk9gIjIY/photo.jpg",
             "groups": {
@@ -22,8 +23,9 @@
                 }
             }
         },
-        "sadikmaxson": {
+        "10152829808477879": {
             "name": "Dan Maxson",
+            "uid": "10152829808477879",
             "description": "I'm a cool cat?",
 "image": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/0af/0b5/3d9955a.jpg",
             "groups": {
@@ -46,6 +48,7 @@
         },
         "sc2783": {
             "name": "Steve Cheruyiot",
+            "uid": "sc2783",
             "description": "Yo dawg",
 "image": "https://media.licdn.com/mpr/mpr/shrink_500_500/p/1/005/0a7/2bb/1626a86.jpg",
             "groups": {
@@ -70,46 +73,26 @@
     "groups": {
         "Columbia": {
             "active": {
-                "sadikmaxson" : {"status" : 1},
-                "jameslinjl" : {"status" : 1}
+                "10152829808477879" : {"status" : 1},
+                "10153197898468033" : {"status" : 1}
             }
         },
         "CFA": {
-            "active": [
-                "jameslinjl",
-                "sadikmaxson",
-                "sc2783"
-            ],
-            "Coffee": [],
-            "Running": [
-                "jameslinjl",
-                "sadikmaxson",
-                "sc2783"
-            ]
+            "active": {
+                "10152829808477879" : {"status" : 1},
+                "sc2783" : {"status" : 1}
+            },
+            "Coffee": {                "10152829808477879" : {"status" : 1},
+                "sc2783" : {"status" : 1}}
         },
         "AppNexus": {
-            "active": [
-                "jameslinjl"
-            ],
-            "Coffee": [],
-            "Running": []
+
         },
         "Poncho": {
-            "active": [
-                "sadikmaxson"
-            ],
-            "Coffee": [
-                "sadikmaxson"
-            ],
-            "Running": []
+
         },
         "Jae Lee's Class": {
-            "active": [
-                "jameslinjl",
-                "sc2783"
-            ],
-            "Coffee": [],
-            "Running": []
+
         }
     }
 }

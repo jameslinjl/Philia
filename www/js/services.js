@@ -22,8 +22,6 @@ angular.module('app.services', [])
       var newUserRef = usersRef.$add({username: username, description: description});
     },
     get: function(userID) {
-      console.log(userID);
-      console.log('Users.get called');
       var ref = usersRef.child(userID);
       return $firebaseObject(ref);
     },
@@ -79,10 +77,10 @@ angular.module('app.services', [])
         angular.forEach(group, function(activityType, key) {
           console.log(key, activityType);
 
-          if (activityType[userID] !== undefined){
-              users.push(_.keys(activityType))
+          if(activityType[userID] !== undefined) {
+            users.push(_.keys(activityType));
           }
-       });
+        });
 
         console.log(_.uniq(_.flatten(users)));
         return _.uniq(_.flatten(users));
@@ -98,12 +96,9 @@ angular.module('app.services', [])
 
       if (trueFalse) {
         group.status = 1;
-        console.log('activate');
       }
       else if (!trueFalse) {
         group.status = null;
-        // group[userID].$save();
-        console.log('deactivate');
       }
       group.$save();
     }
@@ -143,6 +138,57 @@ angular.module('app.services', [])
   //   //   return $firebase(usersRef.child(userID).child('communities')).$asArray();
   //   // }
   // };
+
+  };
+})
+
+.factory('Auth', function($firebaseAuth) {//, $cordovaOauth) {
+
+  // the main firebase reference
+  var authRef = new Firebase('https://fiery-fire-2843.firebaseio.com/auth');
+  var uid;
+
+  return {
+    // return an authentication object to the controller
+    getAuthObj: function() {
+      return $firebaseAuth(authRef);
+    },
+
+    setUser: function(userId) {
+      uid = userId;
+      console.log(uid);
+    },
+
+    getUid: function() {
+      return uid;
+    },
+
+    login: function(authObj) {
+
+      // experimental ionic/cordova version
+
+      // return $cordovaOauth.facebook('1604951066416652', ['email']).then(function(result) {
+      //   authObj.$authWithOAuthToken('facebook', result.access_token).then(function(authData) {
+      //     return authData;
+      //     console.log(JSON.stringify(authData));
+      //   }, function(error) {
+      //         console.error("ERROR: " + error);
+      //   });
+      //   }, function(error) {
+      //       console.log("ERROR: " + error);
+      //   });
+     
+
+
+          // only browser version
+
+          return authObj.$authWithOAuthPopup('facebook').then(function(authData) {
+            return authData;
+          }).catch(function(error) {
+            console.error("Authentication failed:", error);
+          });
+      
+    }
 
   };
 });

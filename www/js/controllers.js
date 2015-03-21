@@ -1,7 +1,7 @@
 
 angular.module('app.controllers', [])
 
-.controller('LoadingCtrl', function($scope, $ionicLoading, $ionicModal, Users, Groups) {
+.controller('LoadingCtrl', function($scope, $ionicLoading, $ionicModal, Users, Groups, Auth) {
 
  $scope.contact = {
     name: 'Mittens Cat',
@@ -17,7 +17,7 @@ angular.module('app.controllers', [])
 
   $scope.getActivityTypes = function(groupName) {
     console.log(groupName);
-    var userId  = 'jameslinjl';
+    var userId  = Auth.getUid();
     Users.getActivityTypes(userId, groupName);
     // In this function we should return the list of activities and their
     // values
@@ -35,7 +35,7 @@ angular.module('app.controllers', [])
 
   $scope.getActivityTypes = function(groupName) {
     console.log(groupName);
-    var userId  = 'jameslinjl';
+    var userId  = Auth.getUid();
     return Users.getActivityTypes(userId, groupName);
     // In this function we should return the list of activities and their
     // values
@@ -44,7 +44,7 @@ angular.module('app.controllers', [])
 
   $scope.changeStatus = function(activityType, activeValue) {
     console.log($scope.toggleGroup);
-    var userId = 'jameslinjl';
+    var userId = Auth.getUid();
     Users.updateActiveUser(userId, $scope.toggleGroup, activityType, activeValue);
     Groups.updateActiveGroup(userId, $scope.toggleGroup, activityType, activeValue);
   };
@@ -55,15 +55,23 @@ angular.module('app.controllers', [])
   });
 })
 
-.controller('UserGroupsCtrl', function($scope, Users, $stateParams, Groups) {
+.controller('UserGroupsCtrl', function($scope, Users, $stateParams, Groups, Auth) {
 
-  var userId  = 'jameslinjl';
-  var user = Users.get(userId);
-  user.$bindTo($scope, 'user');
+  $scope.authObj = Auth.getAuthObj();
+
+   // var userObj = {};
+   // console.log(Auth.login($scope.authObj));
+   Auth.login($scope.authObj).then(function(result) {
+     var userId = result.facebook.id;
+     console.log(userId);
+     var user = Users.get(userId);
+     Auth.setUser(userId);
+     user.$bindTo($scope, 'user');
+   });
 })
 
-.controller('ProfileCtrl', function($scope, $firebaseObject, Users) {
-  var user = Users.get('jameslinjl');
+.controller('ProfileCtrl', function($scope, $firebaseObject, Users, Auth) {
+  var user = Users.get(Auth.getUid());
   user.$bindTo($scope, 'user');
   // user.tempDescription = user.description;
 
@@ -92,15 +100,32 @@ angular.module('app.controllers', [])
 //   $scope.subgroups = groupRef;
 // })
 
-.controller('GroupDetailCtrl', function($scope, $stateParams, Groups) {
+.controller('GroupDetailCtrl', function($scope, $stateParams, Users, Groups, Auth) {
 
   var groupId = $stateParams.groupName;
 
   // this is a promise, once it's fulfilled, then do the function
-  Groups.getUsersByTypes(groupId, 'jameslinjl').then(function(result) {
-    $scope.activeUsers = result;
+  Groups.getUsersByTypes(groupId, Auth.getUid()).then(function(result) {
+    var userArr = [];
+    result.forEach(function(uid) {
+      userArr.push(Users.get(uid));
+    });
+    console.log(userArr);
+    $scope.activeUsers = userArr;
   });
 
   $scope.groupName = groupId;
 });
+
+// .controller('AuthCtrl', function($scope, Auth) {
+
+//   $scope.authObj = Auth.getAuthObj();
+
+//   // var userObj = {};
+//   Auth.login($scope.authObj).then(function(result) {
+//     console.log(result);
+//   });
+
+
+// });
 
