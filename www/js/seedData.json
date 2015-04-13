@@ -7,17 +7,17 @@
 "image": "https://lh3.googleusercontent.com/-feJiQoiOAnU/AAAAAAAAAAI/AAAAAAAAAJc/yUSUk9gIjIY/photo.jpg",
             "groups": {
                 "Columbia": {
-                    "active": false,
+                    "Study": false,
                     "Running": false,
                     "Coffee": false
                 },
                 "CFA": {
-                    "active": false,
+                    "Study": false,
                     "Running": false,
                     "Coffee": false
                 },
                 "AppNexus": {
-                    "active": false,
+                    "Study": false,
                     "Running": false,
                     "Coffee": false
                 }
@@ -30,40 +30,40 @@
 "image": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/0af/0b5/3d9955a.jpg",
             "groups": {
                 "Columbia": {
-                    "active": true,
+                    "Study": true,
                     "Running": true,
                     "Coffee": true
                 },
                 "CFA": {
-                    "active": true,
+                    "Study": true,
                     "Running": true,
                     "Coffee": true
                 },
                 "Poncho": {
-                    "active": true,
+                    "Study": true,
                     "Running": true,
                     "Coffee": true
                 }
             }
         },
-        "sc2783": {
+        "732893663495508": {
             "name": "Steve Cheruyiot",
-            "uid": "sc2783",
+            "uid": "732893663495508",
             "description": "Yo dawg",
 "image": "https://media.licdn.com/mpr/mpr/shrink_500_500/p/1/005/0a7/2bb/1626a86.jpg",
             "groups": {
                 "Columbia": {
-                    "active": false,
+                    "Study": false,
                     "Running": true,
                     "Coffee": false
                 },
                 "CFA": {
-                    "active": false,
+                    "Study": false,
                     "Running": true,
                     "Coffee": false
                 },
                 "Jaes Class": {
-                    "active": false,
+                    "Study": false,
                     "Running": true,
                     "Coffee": false
                 }
@@ -72,18 +72,28 @@
     },
     "groups": {
         "Columbia": {
-            "active": {
-                "10152829808477879" : {"status" : 1},
-                "10153197898468033" : {"status" : 1}
+            "10152829808477879" : {
+                "Study" : true,
+                "Running": true,
+                "Coffee": false
+                },
+            "10153197898468033" : {
+                "Study" : true, 
+                "Running": false,
+                "Coffee": false
             }
         },
         "CFA": {
-            "active": {
-                "10152829808477879" : {"status" : 1},
-                "sc2783" : {"status" : 1}
+            "10152829808477879" : {
+                "Study" : true, 
+                "Running": false,
+                "Coffee": false
             },
-            "Coffee": {                "10152829808477879" : {"status" : 1},
-                "sc2783" : {"status" : 1}}
+            "732893663495508" : {
+                "Study" : true,
+                "Running": false,
+                "Coffee": false
+            }
         },
         "AppNexus": {
 
@@ -91,7 +101,7 @@
         "Poncho": {
 
         },
-        "Jae Lee's Class": {
+        "Jaes Class": {
 
         }
     }

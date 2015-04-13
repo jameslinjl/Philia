@@ -66,27 +66,31 @@ angular.module('app.services', [])
       return $firebaseObject(ref);
     },
 
-    getUsersByTypes: function(groupId, userID) {
+    // getUsersByTypes: function(groupId, userID) {
+    //   var ref = groupRef.child(groupId);
 
-      var ref = groupRef.child(groupId);
-      var group = $firebaseObject(ref);
-      var users = [];
+    //   // ref.orderByChild('Running').equalTo(true).on('value', function(snapshot) {
+    //   //   console.log(snapshot.val());
+    //   // });
 
-      // still not exactly sure everything going on in here
-      return group.$loaded(function(group) {
-        angular.forEach(group, function(activityType, key) {
-          console.log(key, activityType);
+    //   return $firebaseObject(ref);
+    //   var users = [];
 
-          if(activityType[userID] !== undefined) {
-            users.push(_.keys(activityType));
-          }
-        });
+    //   // still not exactly sure everything going on in here
+    //   return group.$loaded(function(group) {
+    //     angular.forEach(group, function(activityType, key) {
+    //       console.log(key, activityType);
 
-        console.log(_.uniq(_.flatten(users)));
-        return _.uniq(_.flatten(users));
-      });
+    //       if(activityType[userID] !== undefined) {
+    //         users.push(_.keys(activityType));
+    //       }
+    //     });
 
-    },
+    //     console.log(_.uniq(_.flatten(users)));
+    //     return _.uniq(_.flatten(users));
+    //   });
+
+    // },
 
     updateActiveGroup: function(userID, groupName, activityType, trueFalse) {
       console.log(groupName);

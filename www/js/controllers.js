@@ -104,6 +104,10 @@ angular.module('app.controllers', [])
 
   var groupId = $stateParams.groupName;
 
+  // Lev's suggestions
+  // $scope.users = $firebaseArray(FIRE_URL + '/groups/' + groupId);
+  // $scope.users = Groups.getUsers(groupId);
+
   // this is a promise, once it's fulfilled, then do the function
   Groups.getUsersByTypes(groupId, Auth.getUid()).then(function(result) {
     var userArr = [];
