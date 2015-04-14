@@ -3,7 +3,7 @@
   var controllers = angular.module('app.controllers');
 
   controllers.controller('LoadingCtrl', function($scope, $ionicLoading,
-    $ionicModal, UsersFactory, GroupsFactory, AuthFactory) {
+    $ionicModal, UsersFactory, GroupsFactory, AuthFactory, CurrentUser) {
 
    $scope.contact = {
       name: 'Mittens Cat',
@@ -36,8 +36,10 @@
     };
 
     $scope.getActivityTypes = function(groupName) {
+      // return CurrentUser.user;
+
       console.log(groupName);
-      var userId  = AuthFactory.getUid();
+      var userId  = CurrentUser.uid;
       return UsersFactory.getActivityTypes(userId, groupName);
       // In this function we should return the list of activities and their
       // values
@@ -45,10 +47,10 @@
 
 
     $scope.changeStatus = function(activityType, activeValue) {
-      console.log($scope.toggleGroup);
-      var userId = Auth.getUid();
-      UsersFactory.updateActiveUser(userId, $scope.toggleGroup, activityType, activeValue);
-      GroupsFactory.updateActiveGroup(userId, $scope.toggleGroup, activityType, activeValue);
+      // console.log($scope.toggleGroup);
+      // var userId = Auth.getUid();
+      UsersFactory.updateActiveUser(CurrentUser.uid, $scope.toggleGroup, activityType, activeValue);
+      GroupsFactory.updateActiveGroup(CurrentUser.uid, $scope.toggleGroup, activityType, activeValue);
     };
 
 

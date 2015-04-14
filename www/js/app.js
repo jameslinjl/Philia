@@ -5,6 +5,7 @@
     'ionic',
     'app.controllers',
     'app.services',
+    'app.filters',
     'firebase'
   ];
 

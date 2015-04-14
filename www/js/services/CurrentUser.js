@@ -3,8 +3,8 @@
 
   services.factory('CurrentUser', function() {
     return {
-      user: {}
+      user: {},
+      uid: {}
     };
-
 });
 })();

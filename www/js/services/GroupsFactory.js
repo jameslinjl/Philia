@@ -17,11 +17,17 @@
       //   var ref = groupRef.child(groupId).child('subgroups');
       //   return $firebase(ref).$asArray();
       // },
-      getUserByType: function(groupId, listType) {
+      getUserByTypes: function(groupId, listType) {
         var ref = groupRef.child(groupId).child(listType);
         console.log(ref);
         return $firebaseObject(ref);
       },
+
+      getMembersOfGroup: function(groupID) {
+        return $firebaseObject(groupRef.child(groupID));
+      },
+
+
 
       // getUsersByTypes: function(groupId, userID) {
       //   var ref = groupRef.child(groupId);

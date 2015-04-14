@@ -73,23 +73,27 @@
     "groups": {
         "Columbia": {
             "10152829808477879" : {
+                "Name" : "Dan Maxson",
                 "Study" : true,
                 "Running": true,
                 "Coffee": false
                 },
             "10153197898468033" : {
-                "Study" : true, 
+                "Name" : "James Lin",
+                "Study" : true,
                 "Running": false,
                 "Coffee": false
             }
         },
         "CFA": {
             "10152829808477879" : {
-                "Study" : true, 
+                "Name" : "Dan Maxson",
+                "Study" : true,
                 "Running": false,
                 "Coffee": false
             },
             "732893663495508" : {
+                "Name" : "Steve Cheruyiot",
                 "Study" : true,
                 "Running": false,
                 "Coffee": false

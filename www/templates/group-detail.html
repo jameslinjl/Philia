@@ -7,8 +7,10 @@
 <ion-view view-title="{{groupName}}">
   <ion-content class="padding">
     <ion-list>
-            <ion-item ng-repeat="user in activeUsers" href="#/home/user/{{user.uid}}">
-              {{user.name}}
+            <ion-item
+            ng-repeat="user in activeUsers | filterByGroups:currentGroups"
+            href="#/home/user/{{user.uid}}">
+              {{user.Name}}
             </ion-item>
           </ion-list>
   </ion-content>
