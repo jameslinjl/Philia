@@ -17,40 +17,21 @@
       $scope.modal = modal;
     });
 
-    $scope.getActivityTypes = function(groupName) {
-      console.log(groupName);
-      var userId  = AuthFactory.getUid();
-      UsersFactory.getActivityTypes(userId, groupName);
-      // In this function we should return the list of activities and their
-      // values
-    };
-
     $scope.openModal = function(groupName) {
       $scope.toggleGroup = groupName;
-      $scope.activityTypes = $scope.getActivityTypes(groupName);
+      $scope.activityTypes = CurrentUser.user.groups[groupName];
       $scope.modal.show();
+      console.log($scope.activityTypes);
     };
 
     $scope.closeModal = function() {
       $scope.modal.hide();
     };
-
-    $scope.getActivityTypes = function(groupName) {
-      // return CurrentUser.user;
-
-      console.log(groupName);
-      var userId  = CurrentUser.uid;
-      return UsersFactory.getActivityTypes(userId, groupName);
-      // In this function we should return the list of activities and their
-      // values
-    };
-
-
-    $scope.changeStatus = function(activityType, activeValue) {
-      // console.log($scope.toggleGroup);
-      // var userId = Auth.getUid();
-      UsersFactory.updateActiveUser(CurrentUser.uid, $scope.toggleGroup, activityType, activeValue);
-      GroupsFactory.updateActiveGroup(CurrentUser.uid, $scope.toggleGroup, activityType, activeValue);
+    $scope.changeStatus = function(activityType, activeValue, groupName) {
+      CurrentUser.user.groups[groupName][activityType] = activeValue;
+      CurrentUser.user.$save();
+      // UsersFactory.updateActiveUser(CurrentUser.uid, $scope.toggleGroup, activityType, activeValue);
+      GroupsFactory.updateActiveGroup(CurrentUser.uid, groupName, activityType, activeValue);
     };
 
 

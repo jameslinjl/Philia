@@ -73,7 +73,7 @@
       views: {
         'tab-groups': {
           templateUrl: 'templates/other-profile.html',
-          controller: 'UserDetailCtrl'
+          controller: 'OtherProfileCtrl'
         }
       }
     });

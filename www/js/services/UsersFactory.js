@@ -18,15 +18,13 @@
         return $firebaseObject(ref);
       },
 
-      updateActiveUser: function(userID, groupName, activityType, trueFalse ) {
-        console.log(activityType);
-        console.log(trueFalse);
-        var ref = usersRef.child(userID).child('groups').child(groupName).child(activityType);
-        var activity = $firebaseObject(ref);
-        console.log(activity);
-        activity.$value = trueFalse;
-        activity.$save();
-      },
+      // updateActiveUser: function(userID, groupName, activityType, trueFalse ) {
+      //   var ref = usersRef.child(userID).child('groups').child(groupName).child(activityType);
+      //   var activity = $firebaseObject(ref);
+      //   console.log(activity);
+      //   activity.$value = trueFalse;
+      //   activity.$save();
+      // },
 
       getActivityTypes: function(userID, groupName) {
         var ref = usersRef.child(userID).child('groups').child(groupName);

@@ -2,9 +2,10 @@
   'use strict';
   var controllers = angular.module('app.controllers');
 
-  controllers.controller('UserDetailCtrl', function($scope, $stateParams,
+  controllers.controller('OtherProfileCtrl', function($scope, $stateParams,
     $firebaseObject, UsersFactory) {
     var userId = $stateParams.userId;
+    console.log(userId);
     $scope.user = UsersFactory.get(userId);
   });
 })();

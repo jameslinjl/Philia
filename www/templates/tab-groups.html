@@ -27,7 +27,7 @@
     <ul class="list">
 
       <ion-toggle toggle-class="toggle-calm" ng-repeat="(activityType, activeValue) in activityTypes"
-      ng-checked="activeValue" ng-model="activeValue" ng-click="changeStatus(activityType, activeValue)">
+      ng-checked="activeValue" ng-model="activeValue" ng-click="changeStatus(activityType, activeValue, toggleGroup)">
       {{activityType}}
       </ion-toggle>
 
