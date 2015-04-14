@@ -5,12 +5,12 @@
   controllers.controller('LoadingCtrl', function($scope, $ionicLoading,
     $ionicModal, UsersFactory, GroupsFactory, AuthFactory, CurrentUser) {
 
-   $scope.contact = {
-      name: 'Mittens Cat',
-      info: 'Tap anywhere on the card to open the modal'
-    };
+   // $scope.contact = {
+   //    name: 'Mittens Cat',
+   //    info: 'Tap anywhere on the card to open the modal'
+   //  };
 
-    $ionicModal.fromTemplateUrl('contact-modal.html', {
+    $ionicModal.fromTemplateUrl('choose-activity.modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
