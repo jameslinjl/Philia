@@ -7,6 +7,7 @@
 
     $scope.currentGroups = [];
 
+
     var groupId = $stateParams.groupName;
 
     _.each(CurrentUser.user.groups[groupId], function( val, key ) {
@@ -16,6 +17,9 @@
     });
 
     $scope.activeUsers = GroupsFactory.getMembersOfGroup(groupId);
+
+    console.log($scope.activeUsers);
+
     $scope.groupName = groupId;
   });
 

@@ -17,6 +17,7 @@
 <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
 <script src="lib/underscore/underscore-min.js"></script>
+<script src="lib/ng-cordova-oauth/ng-cordova-oauth.min.js"></script>
 <!--<script src="js/ng-cordova.min.js"></script>-->
 
 
@@ -35,22 +36,23 @@
 <!-- your filters-->
 <script src="js/filters/filters.module.js"></script>
 <script src="js/filters/FilterByGroups.filter.js"></script>
+<script src="js/filters/FilterByTrue.filter.js"></script>
+
 <!-- your controllers-->
 <script src="js/controllers/controllers.module.js"></script>
 <script src="js/controllers/GroupDetailsCtrl.js"></script>
-<script src="js/controllers/LoadingCtrl.js"></script>
 <script src="js/controllers/ProfileCtrl.js"></script>
 <script src="js/controllers/OtherProfileCtrl.js"></script>
 <script src="js/controllers/UserGroupsCtrl.js"></script>
+<script src="js/controllers/LoginCtrl.js"></script>
+
 
 </head>
 <body ng-app="app" class="platform-ios platform-cordova platform-webview">
     <!--
       The nav bar that will be updated as we navigate between views.
   -->
-  <ion-nav-bar class="bar-stable">
-  <ion-nav-back-button></ion-nav-back-button>
-</ion-nav-bar>
+
     <!--
       The views will be rendered in the <ion-nav-view> directive below
       Templates are in the /templates folder (but you could also

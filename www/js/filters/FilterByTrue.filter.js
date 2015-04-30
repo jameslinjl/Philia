@@ -9,7 +9,7 @@
       console.log('getting called');
       var results = [];
       angular.forEach(activities, function (value, activity) {
-        if (value) {
+        if (value === true && 'activity' !== 'Name' && activity !== 'uid') {
           console.log(results);
           results.push(activity);
         }

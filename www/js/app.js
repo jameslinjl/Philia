@@ -6,22 +6,36 @@
     'app.controllers',
     'app.services',
     'app.filters',
-    'firebase'
+    'firebase',
+    'ngCordovaOauth'
   ];
 
   angular.module('app', depend)//, 'ngCordova'])
 
-  .run(function($ionicPlatform) {
+  .run(function($ionicPlatform, $rootScope, $state) {
+    $rootScope.isLoggedIn = false;
+    $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams){
+        if(toState.name !== 'login' && !$rootScope.isLoggedIn){
+          event.preventDefault();
+          console.log(toState.name);
+          $state.go('login');
+        }
+    });
+
   $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
   if (window.cordova && window.cordova.plugins.Keyboard) {
     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
   }
+  if (window.cordova) {
+    $rootScope.cordova = true;
+  }
   if (window.StatusBar) {
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+
     });
 })
 .config(function($stateProvider, $urlRouterProvider) {
@@ -32,15 +46,21 @@
     $stateProvider
     // setup an abstract state for the tabs directive
     .state('login', {
-      url: '/',
+      url: '/login',
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
     })
 
+    // .state('profile', {
+    //   url: '/profile',
+    //   templateUrl: 'templates/tab-profile.html',
+    //   controller: 'ProfileCtrl'
+    // })
+
     .state('home', {
       url: '/home',
       abstract: true,
-      templateUrl: 'templates/home.html'
+      templateUrl: 'templates/tabs.html'
     })
 
     // Each tab has its own nav history stack:
@@ -53,11 +73,10 @@
         }
       }
     })
-
     .state('home.profile', {
       url: '/profile',
       views: {
-        'tab-profile': {
+        'profile': {
           templateUrl: 'templates/tab-profile.html',
           controller: 'ProfileCtrl'
         }

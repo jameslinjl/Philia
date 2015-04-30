@@ -1,12 +1,15 @@
+
+
+
 <ion-view view-title="Communities">
-<!-- <nav-page hide-back-button="true">
- --><ion-nav-buttons side="primary">
-   <button class="button button-icon icon ion-android-settings" ng-click="doSomething()">
-   </button>
- </ion-nav-buttons>
+
   <ion-content>
   <div>
+
+<!--   <a class="button icon icon-right ion-chevron-right" href="#/home/profile">Scientific Facts</a>
+ -->
     <ion-list>
+
       <ion-item ng-repeat="(groupName, value) in user.user.groups" href="#/home/group/{{groupName}}">
         {{groupName}}
         <ion-option-button class="button-positive" ng-click="openModal(groupName)">Activate</ion-option-button>

@@ -16,7 +16,7 @@
     });
 
     $scope.activeUsers = GroupsFactory.getMembersOfGroup(groupId);
-
+    $scope.groupName = groupId;
   });
 
 })();

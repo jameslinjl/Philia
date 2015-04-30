@@ -2,31 +2,41 @@
   'use strict';
   var services = angular.module('app.services');
 
-  services.factory('AuthFactory', function($firebaseAuth, CurrentUser, UsersFactory) {//, $cordovaOauth) {
+  services.factory('AuthFactory', function($q, $firebaseAuth, CurrentUser, UsersFactory, $cordovaOauth) {//, $cordovaOauth) {
 
     // the main firebase reference
     var authRef = new Firebase('https://fiery-fire-2843.firebaseio.com/auth');
-    var authObj = $firebaseAuth(authRef);
     return {
-      getAuthObj: function() {
-        return $firebaseAuth(authRef);
-      },
-      login: function() {
-            return authObj.$authWithOAuthPopup('facebook')
-              .then(function(authData) {
-                console.log(authData);
-                var userId = authData.facebook.id;
-                console.log(userId);
-                var user = UsersFactory.get(userId);
-                CurrentUser.user = user;
-                CurrentUser.uid = userId;
-                return authData;
-            }).catch(function(error) {
-              console.error('Authentication failed:', error);
-            });
-
-      }
-
+      login: login
     };
+
+    function login(email) {
+      var auth = $firebaseAuth(authRef);
+      var d = $q.defer();
+
+      var email = 'daniel.sadik@gmail.com';
+
+      $cordovaOauth.facebook('1604951066416652', email)
+        .then(function(result) {
+          console.log(result);
+          auth.$authWithOAuthToken('facebook', result.access_token)
+          .then(function(authData) {
+            var userID = authData.facebook.id;
+            var user = UsersFactory.get(userID);
+            CurrentUser.user = user;
+            CurrentUser.uid = userID;
+            CurrentUser.loggedIn = true;
+            console.log(user);
+            d.resolve(user);
+          })
+          .catch(function(error) {
+            d.reject(error);
+          });
+        }).catch(function(error){
+          d.reject(error);
+        });
+      return d.promise;
+    }
+
   });
 })();

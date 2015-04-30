@@ -5,6 +5,8 @@
   controllers.controller('ProfileCtrl', function($scope,
     AuthFactory, CurrentUser) {
 
+    console.log('loaded');
+
     $scope.user = CurrentUser.user;
     $scope.updateProfile = function(description) {
       $scope.user.description = description;

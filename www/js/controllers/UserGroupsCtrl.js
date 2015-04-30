@@ -3,14 +3,17 @@
   var controllers = angular.module('app.controllers');
 
   controllers.controller('UserGroupsCtrl', function($scope, $ionicLoading,
-    $ionicModal, UsersFactory, GroupsFactory, AuthFactory, CurrentUser) {
-    console.log('kitty');
-   // $scope.contact = {
-   //    name: 'Mittens Cat',
-   //    info: 'Tap anywhere on the card to open the modal'
-   //  };
-   $scope.user = CurrentUser;
-   console.log($scope);
+    $ionicModal, UsersFactory, GroupsFactory, AuthFactory, CurrentUser,
+    $ionicHistory, $state) {
+
+    $ionicHistory.clearHistory();
+
+    $scope.settings = function() {
+      $state.go('home.profile');
+    };
+
+
+    $scope.user = CurrentUser;
 
     $ionicModal.fromTemplateUrl('choose-activity.modal.html', {
       scope: $scope,

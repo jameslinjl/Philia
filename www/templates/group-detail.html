@@ -10,8 +10,9 @@
             <ion-item
             ng-repeat="user in activeUsers | filterByGroups:currentGroups"
             href="#/home/user/{{user.uid}}/{{groupName}}">
-              {{user.Name}}
-            </ion-item>
+      <h2>{{user.Name}}</h2>
+      <p><span ng-repeat="item in user | filterByTrue">{{item}} </span></p>
+  </ion-item>
           </ion-list>
   </ion-content>
 </ion-view>

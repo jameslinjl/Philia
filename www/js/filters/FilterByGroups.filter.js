@@ -4,7 +4,7 @@
 
   filters.filter('filterByGroups', filterByGroups);
 
-  function filterByGroups (CurrentUser) {
+  function filterByGroups (CurrentUser, UsersFactory) {
     return function (users, groups) {
       console.log(users);
       console.log(groups);

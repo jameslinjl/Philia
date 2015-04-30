@@ -6,7 +6,8 @@
     'app.controllers',
     'app.services',
     'app.filters',
-    'firebase'
+    'firebase',
+    'ngCordovaOauth'
   ];
 
   angular.module('app', depend)//, 'ngCordova'])
@@ -31,6 +32,12 @@
     // Each state's controller can be found in controllers.js
     $stateProvider
     // setup an abstract state for the tabs directive
+    .state('login', {
+      url: '/',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+    })
+
     .state('home', {
       url: '/home',
       abstract: true,
@@ -69,7 +76,7 @@
     })
 
     .state('home.user-detail', {
-      url: '/user/:userId',
+      url: '/user/:userId/:groupName',
       views: {
         'tab-groups': {
           templateUrl: 'templates/other-profile.html',
@@ -78,9 +85,18 @@
       }
     });
 
+    // .state('home.user-detail', {
+    //   url: '/user/:userId/:groupName',
+    //   views: {
+    //     'tab-groups': {
+    //       templateUrl: 'templates/other-profile.html',
+    //       controller: 'OtherProfileCtrl'
+    //     }
+    //   }
+    // });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/home/groups');
+    $urlRouterProvider.otherwise('/');
 
   })
 .factory('_', function() {
