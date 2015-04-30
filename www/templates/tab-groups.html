@@ -1,8 +1,13 @@
 <ion-view view-title="Communities">
+<!-- <nav-page hide-back-button="true">
+ --><ion-nav-buttons side="primary">
+   <button class="button button-icon icon ion-android-settings" ng-click="doSomething()">
+   </button>
+ </ion-nav-buttons>
   <ion-content>
-  <div ng-controller="LoadingCtrl">
+  <div>
     <ion-list>
-      <ion-item ng-repeat="(groupName, value) in user.groups" href="#/home/group/{{groupName}}">
+      <ion-item ng-repeat="(groupName, value) in user.user.groups" href="#/home/group/{{groupName}}">
         {{groupName}}
         <ion-option-button class="button-positive" ng-click="openModal(groupName)">Activate</ion-option-button>
         <!-- <ion-option-button class="button-positive" ng-click="activateGroup(groupName)">Activate</ion-option-button> -->

@@ -4,7 +4,8 @@
   services.factory('CurrentUser', function() {
     return {
       user: {},
-      uid: {}
+      uid: {},
+      loggedIn: false
     };
 });
 })();

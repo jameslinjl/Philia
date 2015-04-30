@@ -8,6 +8,12 @@ The Friends service returns an array of friend data
   <ion-content class="padding">
     <img ng-src="{{user.image}}" class="full-image">
     <h3>{{user.name}}, 21</h3>
+    <br>
+    <li ng-repeat="group in user.groups[groupId] | filterByTrue">
+    {{group}}
+    </li>
+
+
 <!-- age will be here eventually -->
 
     <div>2 miles away, Active 23 minutes ago</div>

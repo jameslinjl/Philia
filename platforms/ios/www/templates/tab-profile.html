@@ -6,9 +6,10 @@ The Friends service returns an array of friend data
 -->
 <ion-view view-title="{{user.name}}">
   <ion-content class="padding">
-    <h3>We will add many fields here</h3>
-    <p>
-      {{user.description}}
-    </p>
+    <img src="{{user.image}}" class="full-image">
+    <form ng-submit="updateProfile(about)">
+      <input type="text" ng-model="about" placeholder="Description"/>
+      <button class="button button-block button-positive" type="submit">Update</button>
+    </form>
   </ion-content>
 </ion-view>

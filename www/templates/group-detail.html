@@ -9,7 +9,7 @@
     <ion-list>
             <ion-item
             ng-repeat="user in activeUsers | filterByGroups:currentGroups"
-            href="#/home/user/{{user.uid}}">
+            href="#/home/user/{{user.uid}}/{{groupName}}">
               {{user.Name}}
             </ion-item>
           </ion-list>

@@ -4,11 +4,13 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{group.name}}">
+<ion-view view-title="{{groupName}}">
   <ion-content class="padding">
     <ion-list>
-            <ion-item ng-repeat="user in group.activeUsers" href="#/tab/users/{{user.name}}">
-              {{user.name}}
+            <ion-item
+            ng-repeat="user in activeUsers | filterByGroups:currentGroups"
+            href="#/home/user/{{user.uid}}">
+              {{user.Name}}
             </ion-item>
           </ion-list>
   </ion-content>

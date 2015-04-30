@@ -5,6 +5,8 @@
   controllers.controller('OtherProfileCtrl', function($scope, $stateParams,
     $firebaseObject, UsersFactory) {
     var userId = $stateParams.userId;
+    $scope.groupId = $stateParams.groupName;
+
     console.log(userId);
     $scope.user = UsersFactory.get(userId);
   });

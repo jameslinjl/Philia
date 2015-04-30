@@ -1,25 +1,26 @@
-var count = 0;
 
-angular.module('app.controllers', [])
+// angular.module('app.controllers', [])
 
-.controller('UserGroupsCtrl', function($scope, Users, $stateParams) {
-  var user = Users.get($stateParams.userID);
-  user.$bindTo($scope, 'user');
 
-  var activateGroup = function(groupName) {
-    user.groups.groupName.active = true;
-    console.log(groupName + ' is active!!! :)');
-  };
-})
 
-.controller('ProfileCtrl', function($scope, $firebase, Users) {
-  var user = Users.get($stateParams.userID);
-  user.$bindTo($scope, 'user');
-})
+// // .controller('SubGroupCtrl', function($scope, $stateParams, Groups) {
+// //   var groupId = $stateParams.groupName;
+// //   var groupRef = Groups.getGroupById(groupId);
+// //   console.log(groupRef.$keyAt(0));
+// //   $scope.groupName = groupId;
+// //   $scope.subgroups = groupRef;
+// // })
 
-.controller('GroupDetailCtrl', function($scope, $stateParams, Groups) {
-  var groupId = $stateParams.groupId;
-  var groupRef = Groups.get(groupId);
-  groupRef.$bindTo($scope, 'group');
-});
+
+// // .controller('AuthCtrl', function($scope, Auth) {
+
+// //   $scope.authObj = Auth.getAuthObj();
+
+// //   // var userObj = {};
+// //   Auth.login($scope.authObj).then(function(result) {
+// //     console.log(result);
+// //   });
+
+
+// // });
 

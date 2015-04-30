@@ -1,0 +1,116 @@
+{
+    "users": {
+        "10153197898468033": {
+            "name": "James Lin",
+            "uid": "10153197898468033",
+            "description": "You on your way?",
+"image": "https://lh3.googleusercontent.com/-feJiQoiOAnU/AAAAAAAAAAI/AAAAAAAAAJc/yUSUk9gIjIY/photo.jpg",
+            "groups": {
+                "Columbia": {
+                    "Study": false,
+                    "Running": false,
+                    "Coffee": false
+                },
+                "CFA": {
+                    "Study": false,
+                    "Running": false,
+                    "Coffee": false
+                },
+                "AppNexus": {
+                    "Study": false,
+                    "Running": false,
+                    "Coffee": false
+                }
+            }
+        },
+        "10152829808477879": {
+            "name": "Dan Maxson",
+            "uid": "10152829808477879",
+            "description": "I'm a cool cat?",
+"image": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/0af/0b5/3d9955a.jpg",
+            "groups": {
+                "Columbia": {
+                    "Study": true,
+                    "Running": true,
+                    "Coffee": true
+                },
+                "CFA": {
+                    "Study": true,
+                    "Running": true,
+                    "Coffee": true
+                },
+                "Poncho": {
+                    "Study": true,
+                    "Running": true,
+                    "Coffee": true
+                }
+            }
+        },
+        "732893663495508": {
+            "name": "Steve Cheruyiot",
+            "uid": "732893663495508",
+            "description": "Yo dawg",
+"image": "https://media.licdn.com/mpr/mpr/shrink_500_500/p/1/005/0a7/2bb/1626a86.jpg",
+            "groups": {
+                "Columbia": {
+                    "Study": false,
+                    "Running": true,
+                    "Coffee": false
+                },
+                "CFA": {
+                    "Study": false,
+                    "Running": true,
+                    "Coffee": false
+                },
+                "Jaes Class": {
+                    "Study": false,
+                    "Running": true,
+                    "Coffee": false
+                }
+            }
+        }
+    },
+    "groups": {
+        "Columbia": {
+            "10152829808477879" : {
+                "Name" : "Dan Maxson",
+                "uid" : "10152829808477879",
+                "Study" : true,
+                "Running": true,
+                "Coffee": false
+                },
+            "10153197898468033" : {
+                "Name" : "James Lin",
+                "uid" : "10153197898468033",
+                "Study" : true,
+                "Running": false,
+                "Coffee": false
+            }
+        },
+        "CFA": {
+            "10152829808477879" : {
+                "Name" : "Dan Maxson",
+                "uid" : "10152829808477879",
+                "Study" : true,
+                "Running": false,
+                "Coffee": false
+            },
+            "732893663495508" : {
+                "Name" : "Steve Cheruyiot",
+                "uid" : "732893663495508",
+                "Study" : true,
+                "Running": false,
+                "Coffee": false
+            }
+        },
+        "AppNexus": {
+
+        },
+        "Poncho": {
+
+        },
+        "Jaes Class": {
+
+        }
+    }
+}
