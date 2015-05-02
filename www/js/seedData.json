@@ -104,13 +104,13 @@
             }
         },
         "AppNexus": {
-
-        },
-        "Poncho": {
-
-        },
-        "Jaes Class": {
-
+            "10153197898468033" : {
+                "Name" : "James Lin",
+                "uid" : "10153197898468033",
+                "Study" : true,
+                "Running": false,
+                "Coffee": false
+            }
         }
     }
 }

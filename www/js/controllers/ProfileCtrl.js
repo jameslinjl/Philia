@@ -8,6 +8,8 @@
     console.log('loaded');
 
     $scope.user = CurrentUser.user;
+
+    console.log($scope.user.image);
     $scope.updateProfile = function(description) {
       $scope.user.description = description;
       $scope.user.$save();

@@ -28,6 +28,21 @@
 
         activity.$value = trueFalse;
         activity.$save();
+      },
+      addGroupsToUser: function(userID, userName) {
+        var ref = $firebaseObject(groupRef);
+        ref.$loaded().then( function(data) {
+          console.log(data);
+
+          // var groups = ['AppNexus', 'CFA', 'Columbia']
+
+          data['AppNexus'][userID] = {'Name' : userName, 'uid' : userID};
+          data['CFA'][userID] = {'Name' : userName, 'uid' : userID};
+          data['Columbia'][userID] = {'Name' : userName, 'uid' : userID};
+          data.$save();
+        });
+        console.log(ref);
+        // hardcoded until admin page is finished
       }
     };
   });

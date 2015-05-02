@@ -7,6 +7,7 @@
 
     $scope.loggedIn = false;
 
+
     $scope.login= function() {
 
       console.log(AuthFactory.login());

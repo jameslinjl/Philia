@@ -1,7 +1,7 @@
 <ion-view view-title="{{user.name}}">
 
   <ion-content class="padding">
-    <img src="{{user.image}}" class="full-image">
+    <img ng-src="{{user.image}}" class="full-image">
     <form ng-submit="updateProfile(about)">
       <input type="text" ng-model="about" placeholder="Description"/>
       <button class="button button-block button-positive" type="submit">Update</button>

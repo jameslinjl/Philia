@@ -42,14 +42,15 @@
 
         auth.$authWithOAuthPopup('facebook')
                  .then(function(authData) {
-                   var userID = authData.facebook.id;
-                   var user = UsersFactory.get(userID);
-                   CurrentUser.user = user;
-                   CurrentUser.uid = userID;
-                   CurrentUser.loggedIn = true;
-                   console.log(user);
-                   $rootScope.isLoggedIn = true;
-                   d.resolve(user);
+                  var userID = authData.facebook.id;
+                  var user = UsersFactory.get(userID, authData);
+                  CurrentUser.user = user;
+                  CurrentUser.uid = userID;
+
+                  CurrentUser.loggedIn = true;
+                  $rootScope.isLoggedIn = true;
+                  d.resolve(user);
+
                  })
                  .catch(function(error) {
                    d.reject();
